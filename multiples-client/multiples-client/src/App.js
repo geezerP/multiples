@@ -16,10 +16,11 @@ function App() {
         setInteger("");
         setMessage(`Check Multiple Result: ${res.data.result}`);
       } else {
-        setMessage("Some error occured");
+        setMessage(`Error: ${res.status}: ${res.message}`);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err)
+      setMessage("Kindly provide a value to check");
     }
   };
 
