@@ -71,9 +71,3 @@ def check_multiples(request):
                 }
                 return Response(response, status=400)
 
-    elif request.method != 'GET':
-        response = {
-            'error': 'Please use GET method'
-        }
-        return Response(response, status=400)
-
