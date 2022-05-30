@@ -14,11 +14,16 @@ redis_instance = redis.StrictRedis(host=settings.REDIS_HOST,
 
 
 @api_view(['GET'])
-def check_multiples(request, **kwargs):
+def check_multiples(request):
     if request.method == 'GET':
-        if request.data.get('integer') is None:
+        if request.data.get('integer') is None or request.data.get('integer') == '':
             response = {
                 'error': 'Please provide a number to check'
+            }
+            return Response(response, status=400)
+        elif type(request.data.get('integer')) is not int:
+            response = {
+                'error': 'Please provide a valid number to check'
             }
             return Response(response, status=400)
         else:
