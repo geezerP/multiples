@@ -42,13 +42,11 @@ The **MULTIPLES PROJECT** :
 -   Navigate to multiples-client directory in different terminal and run: 
     ```
    npm install
-
     ```
 
 -   Run App 
     ```
    npm start
-
     ```
 
 ## Backend Setup
