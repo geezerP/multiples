@@ -12,11 +12,20 @@ from rest_framework.response import Response
 redis_instance = redis.StrictRedis(host=settings.REDIS_HOST,
                                    port=settings.REDIS_PORT, db=0)
 
+'''
+ This function is used to check if a number is a multiple of 7 or 5.
+ a multiple of 5, returns "L"
+ a multiple of 7, returns "R"
+ a multiple of both 5 and 7, returns "LR
+ otherwise returns the provided integer.
+'''
 
 @api_view(['GET'])
 def check_multiples(request):
+    # We use redis to control the rate at which we run computational checks on the multiples.
     if request.method == 'GET':
-        if request.data.get('integer') is None or request.data.get('integer') == '':
+        # check if the user has submitted a number
+        if request.data.get('integer') is None or request.data.get('integer') == '': 
             response = {
                 'error': 'Please provide a number to check'
             }
