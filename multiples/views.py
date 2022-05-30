@@ -14,52 +14,57 @@ redis_instance = redis.StrictRedis(host=settings.REDIS_HOST,
 
 
 @api_view(['GET'])
-def check_multiples(request, *args, **kwargs):
+def check_multiples(request, **kwargs):
     if request.method == 'GET':
-        # get the number from the query string or use request.data
-        number_to_check = int(request.data.get('integer')) 
-
-        if number_to_check:
-            value = redis_instance.get(number_to_check)
-            if value:
-                response = {
-                    'result': value
-                }
-                return Response(response, status=200)
-            else:
-                if number_to_check % 5 == 0 and number_to_check % 7 == 0:
-                    response = {
-                       'result': 'LR'
-                    }
-                    redis_instance.set(number_to_check, 'LR')
-                    return Response(response, status=200)
-                elif number_to_check % 5 == 0:
-                    response = {
-                        'result': 'L'
-                    }
-                    redis_instance.set(number_to_check, 'L')
-                    return Response(response, status=200)
-                elif number_to_check % 7 == 0:
-                    response = {
-                        'result': 'R'
-                    }
-                    redis_instance.set(number_to_check, 'R')
-                    return Response(response, status=200)
-                else:
-                    response = {
-                        'result': number_to_check
-                    }
-                    return Response(response, status=200)
-        elif not number_to_check:
+        if request.data.get('integer') is None:
             response = {
                 'error': 'Please provide a number to check'
             }
             return Response(response, status=400)
         else:
-            response = {
-                'error': 'Please provide a number to check'
-            }
-            return Response(response, status=400)
+            number_to_check = int(request.data.get('integer'))
+
+            if number_to_check:
+                value = redis_instance.get(number_to_check)
+                if value:
+                    response = {
+                        'result': value
+                    }
+                    return Response(response, status=200)
+                else:
+                    if number_to_check % 5 == 0 and number_to_check % 7 == 0:
+                        response = {
+                        'result': 'LR'
+                        }
+                        redis_instance.set(number_to_check, 'LR')
+                        return Response(response, status=200)
+                    elif number_to_check % 5 == 0:
+                        response = {
+                            'result': 'L'
+                        }
+                        redis_instance.set(number_to_check, 'L')
+                        return Response(response, status=200)
+                    elif number_to_check % 7 == 0:
+                        response = {
+                            'result': 'R'
+                        }
+                        redis_instance.set(number_to_check, 'R')
+                        return Response(response, status=200)
+                    else:
+                        response = {
+                            'result': number_to_check
+                        }
+                        return Response(response, status=200)
+            elif not number_to_check:
+                response = {
+                    'error': 'Please provide a number to check'
+                }
+                return Response(response, status=400)
+            else:
+                response = {
+                    'error': 'Please provide a number to check'
+                }
+                return Response(response, status=400)
 
     elif request.method != 'GET':
         response = {
