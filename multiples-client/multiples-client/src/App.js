@@ -20,7 +20,7 @@ function App() {
       }
     } catch (err) {
       console.error(err)
-      setMessage("Kindly provide a value to check");
+      setMessage("Kindly provide an integer/number to check");
     }
   };
 
@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="integer"
           value={integer}
           placeholder="Integer"
           onChange={(e) => setInteger(e.target.value)}
