@@ -6,12 +6,12 @@
 The **MULTIPLES PROJECT** :
 - Receives as input an integer number and if the integer is:
 
---  a multiple of 5, it should return "L"
---  a multiple of 7, it should return "R"
---  a multiple of both 5 and 7, then both "LR" should be displayed
+    -  a multiple of 5, it should return "L"
+    -  a multiple of 7, it should return "R"
+    -  a multiple of both 5 and 7, then both "LR" should be displayed
 
--- otherwise the provided integer should be returned
--- the output should be a properly formatted JSON file
+    -  otherwise the provided integer should be returned
+    - the output should be a properly formatted JSON file
 
 ## Built with
 - Python version  3
