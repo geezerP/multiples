@@ -14,7 +14,7 @@ function App() {
 
       if (res.status === 200) {
         setInteger("");
-        setMessage(`Check Multiple Result: ${res.data.result}`);
+        setMessage(`${JSON.stringify(res.data)}`);
       } else {
         setMessage(`Error: ${res.status}: ${res.message}`);
       }
