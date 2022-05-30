@@ -20,10 +20,10 @@ redis_instance = redis.StrictRedis(host=settings.REDIS_HOST,
  otherwise returns the provided integer.
 '''
 
-@api_view(['GET'])
+@api_view(['POST'])
 def check_multiples(request):
     # We use redis to control the rate at which we run computational checks on the multiples.
-    if request.method == 'GET':
+    if request.method == 'POST':
         # check if the user has submitted a number
         if request.data.get('integer') is None or request.data.get('integer') == '': 
             response = {

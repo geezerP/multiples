@@ -31,6 +31,30 @@ The **MULTIPLES PROJECT** :
 
 ## Development set up
 
+## Client setup
+
+-   Ensure you have npm installed 
+    ```
+    npm --version
+    >> 8.6.0
+    ```
+
+-   Navigate to multiples-client directory in different terminal and run: 
+    ```
+   npm install
+
+    ```
+
+-   Run App 
+    ```
+   npm start
+
+    ```
+
+## Backend Setup
+
+-   In a different terminal run the following:
+
 -   Ensure that Redis is installed and running  locally:
 
     ```
