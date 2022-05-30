@@ -39,14 +39,14 @@ The **MULTIPLES PROJECT** :
     >> 8.6.0
     ```
 
--   Navigate to multiples-client directory in different terminal and run: 
+-   Navigate to multiples-client directory in different terminal and run
     ```
-   npm install
+    npm install
     ```
 
 -   Run App 
     ```
-   npm start
+    npm start
     ```
 
 ## Backend Setup
