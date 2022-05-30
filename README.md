@@ -17,7 +17,6 @@ The **MULTIPLES PROJECT** :
 - Python version  3
 - Django (DRF)
 - Redis
- ```
 
 ## Architecture and Design Approach
 - Redis is used to store a cache for integers that have hit the system. reason is since the integers are not dynamic data, if we receive a request with the same number we simply retrieve 
